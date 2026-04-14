@@ -16,6 +16,7 @@ import java.util.List;
 public class BoardController {
     private final BoardService boardService;
 
+    // @Hidden - не отображать операцию в OpenAPI
     @Operation(summary = "Получить все доступные борды")
     @GetMapping(value = "/available", produces = "application/json")
     public List<BoardDTO> getAvailableBoards() {
