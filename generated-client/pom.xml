@@ -63,6 +63,7 @@
                             <value>${project.basedir}</value>
                             <regex>\\</regex>
                             <replacement>/</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
                     <execution>
@@ -76,6 +77,7 @@
                             <value>${project.build.directory}</value>
                             <regex>\\</regex>
                             <replacement>/</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
                 </executions>
@@ -91,18 +93,29 @@
                         </goals>
                         <configuration>
                             <inputSpec>${fix.project.basedir}/src/main/resources/api-docs.yaml</inputSpec>
+                            <!-- Генератор: java (клиент) | spring (сервер) |
+                                 kotlin | kotlin-spring | java-camel |
+                                 jaxrs-cxf | jaxrs-jersey -->
                             <generatorName>java</generatorName>
                             <output>${fix.project.build.directory}/generated-sources/openapi</output>
                             <ignoreFileOverride>${fix.project.basedir}/.openapi-generator-ignore</ignoreFileOverride>
                             <apiPackage>com.example.boardrental.controllers</apiPackage>
                             <modelPackage>com.example.boardrental.models</modelPackage>
                             <configOptions>
+                                <!-- HTTP-клиент: resttemplate | webclient | restclient |
+                                     apache-httpclient | okhttp-gson | feign -->
                                 <library>resttemplate</library>
+                                <!-- Не использовать JsonNullable-обёртки для nullable-полей -->
                                 <openApiNullable>false</openApiNullable>
+                                <!-- Генерировать конструктор со всеми полями в моделях -->
                                 <generateConstructorWithAllArgs>true</generateConstructorWithAllArgs>
+                                <!-- Использовать Jakarta EE аннотации вместо javax -->
                                 <useJakartaEe>true</useJakartaEe>
+                                <!-- Регистрировать сгенерированные API-классы как Spring-бины -->
                                 <generateClientAsBean>true</generateClientAsBean>
+                                <!-- Использовать LocalDateTime вместо OffsetDateTime для дат -->
                                 <dateLibrary>java8-localdatetime</dateLibrary>
+                                <!-- Использовать Java 8+ API (Optional, CompletableFuture и т.д.) -->
                                 <java8>true</java8>
                             </configOptions>
                         </configuration>
