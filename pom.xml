@@ -112,6 +112,7 @@
                             <value>${project.basedir}</value>
                             <regex>\\</regex>
                             <replacement>/</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
                     <execution>
@@ -125,6 +126,7 @@
                             <value>${project.build.directory}</value>
                             <regex>\\</regex>
                             <replacement>/</replacement>
+                            <failIfNoMatch>false</failIfNoMatch>
                         </configuration>
                     </execution>
                 </executions>
@@ -145,15 +147,25 @@
                             <apiPackage>com.example.boardrental.controllers</apiPackage>
                             <modelPackage>com.example.boardrental.models</modelPackage>
                             <configOptions>
+                                <!-- Не генерировать аннотации документации (Swagger/SpringDoc) -->
                                 <documentationProvider>none</documentationProvider>
+                                <!-- Генерировать только интерфейсы контроллеров без реализации -->
                                 <interfaceOnly>true</interfaceOnly>
+                                <!-- Оборачивать возвращаемые типы в ResponseEntity -->
                                 <useResponseEntity>true</useResponseEntity>
+                                <!-- Не использовать JsonNullable-обёртки для nullable-полей -->
                                 <openApiNullable>false</openApiNullable>
+                                <!-- Генерировать код, совместимый со Spring Boot 3 (Jakarta EE) -->
                                 <useSpringBoot3>true</useSpringBoot3>
+                                <!-- Генерировать конструктор со всеми полями в моделях -->
                                 <generateConstructorWithAllArgs>true</generateConstructorWithAllArgs>
+                                <!-- Группировать эндпоинты по тегам из спецификации -->
                                 <useTags>true</useTags>
+                                <!-- Добавлять аннотации Bean Validation (jakarta.validation) -->
                                 <useBeanValidation>true</useBeanValidation>
+                                <!-- Использовать LocalDateTime вместо OffsetDateTime для дат -->
                                 <dateLibrary>java8-localdatetime</dateLibrary>
+                                <!-- Использовать Java 8+ API (Optional, CompletableFuture и т.д.) -->
                                 <java8>true</java8>
                             </configOptions>
                         </configuration>
