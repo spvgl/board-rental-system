@@ -147,7 +147,7 @@
                             <apiPackage>com.example.boardrental.controllers</apiPackage>
                             <modelPackage>com.example.boardrental.models</modelPackage>
                             <configOptions>
-                                <!-- Не генерировать аннотации документации (Swagger/SpringDoc) -->
+                                <!-- Выбор провайдера документации (springdoc, springfox, none) -->
                                 <documentationProvider>none</documentationProvider>
                                 <!-- Генерировать только интерфейсы контроллеров без реализации -->
                                 <interfaceOnly>true</interfaceOnly>
@@ -157,7 +157,7 @@
                                 <openApiNullable>false</openApiNullable>
                                 <!-- Генерировать код, совместимый со Spring Boot 3 (Jakarta EE) -->
                                 <useSpringBoot3>true</useSpringBoot3>
-                                <!-- Генерировать конструктор со всеми полями в моделях -->
+                                <!-- Генерировать конструктор моделей, который принимает все поля в качестве аргументов -->
                                 <generateConstructorWithAllArgs>true</generateConstructorWithAllArgs>
                                 <!-- Группировать эндпоинты по тегам из спецификации -->
                                 <useTags>true</useTags>
